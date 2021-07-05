@@ -95,18 +95,18 @@ function SIPProblem(x_l::Vector{Float64}, x_u::Vector{Float64},
 
     for key in keys(kwargs)
         string_key = String(key)
-        if string_key[1:3] === "llp1"
-            prob.kwargs_llp1[string_key[4:end]] = kwargs[key]
-        elseif string_key[1:3] === "llp2"
-            prob.kwargs_llp2[string_key[4:end]] = kwargs[key]
-        elseif string_key[1:3] === "llp3"
-            prob.kwargs_llp3[string_key[4:end]] = kwargs[key]
-        elseif string_key[1:3] === "lbd"
-            prob.kwargs_lbd[string_key[4:end]] = kwargs[key]
-        elseif string_key[1:3] === "ubd"
-            prob.kwargs_ubd[string_key[4:end]] = kwargs[key]
-        elseif string_key[1:3] === "res"
-            prob.kwargs_res[string_key[4:end]] = kwargs[key]
+        if string_key[1:5] === "llp1_"
+            prob.kwargs_llp1[string_key[6:end]] = kwargs[key]
+        elseif string_key[1:5] === "llp2_"
+            prob.kwargs_llp2[string_key[6:end]] = kwargs[key]
+        elseif string_key[1:5] === "llp3_"
+            prob.kwargs_llp3[string_key[6:end]] = kwargs[key]
+        elseif string_key[1:4] === "lbd_"
+            prob.kwargs_lbd[string_key[5:end]] = kwargs[key]
+        elseif string_key[1:4] === "ubd_"
+            prob.kwargs_ubd[string_key[5:end]] = kwargs[key]
+        elseif string_key[1:4] === "res_"
+            prob.kwargs_res[string_key[5:end]] = kwargs[key]
         elseif key in fieldnames(SIPProblem)
             setfield!(prob, key, kwargs[key])
         else
